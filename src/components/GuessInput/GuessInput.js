@@ -20,7 +20,7 @@ function GuessInput({ handleSubmitGuess }) {
         <input
           id="guess-input"
           type="text"
-          required={true}
+          required
           minLength={5}
           maxLength={5}
           value={tentativeGuess}
