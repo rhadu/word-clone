@@ -4,8 +4,9 @@ import { sample } from '../../utils'
 import { WORDS } from '../../data'
 import GuessInput from '../GuessInput'
 import GuessResults from '../GuessResults'
-import { checkGuess } from '../../game-helpers'
 import { NUM_OF_GUESSES_ALLOWED } from '../../constants'
+import WonBanner from '../WonBanner'
+import LostBanner from '../LostBanner'
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS)
@@ -13,40 +14,34 @@ const answer = sample(WORDS)
 console.info({ answer })
 
 function Game() {
+  // running / won / lost
+  const [gameStatus, setGameStatus] = React.useState('running')
   const [guesses, setGuesses] = React.useState([])
 
-  const guessesClone = [...guesses]
-  const lastGuess = guessesClone.pop()
-  const winner =
-    lastGuess && lastGuess.every(({ status }) => status === 'correct')
-  const loser = !winner && guesses.length === NUM_OF_GUESSES_ALLOWED
-
-  const gameOver = winner || loser
-
   function handleSubmitGuess(tentativeGuess) {
-    const guess = checkGuess(tentativeGuess, answer)
-    setGuesses([...guesses, guess])
+    const nextGuesses = [...guesses]
+    nextGuesses.push(tentativeGuess)
+
+    if (tentativeGuess === answer) {
+      setGameStatus('won')
+    } else {
+      if (nextGuesses.length === NUM_OF_GUESSES_ALLOWED) {
+        setGameStatus('lost')
+      }
+    }
+
+    setGuesses([...guesses, tentativeGuess])
   }
 
   return (
     <>
-      <GuessResults guesses={guesses} />
-      <GuessInput handleSubmitGuess={handleSubmitGuess} gameOver={gameOver} />
-      {winner && (
-        <div className="happy banner">
-          <p>
-            <strong>Congratulations!</strong> Got it in{' '}
-            <strong>{guesses.length} guesses</strong>.
-          </p>
-        </div>
-      )}
-      {loser && (
-        <div className="sad banner">
-          <p>
-            Sorry, the correct answer is <strong>{answer}</strong>.
-          </p>
-        </div>
-      )}
+      <GuessResults guesses={guesses} answer={answer} />
+      <GuessInput
+        handleSubmitGuess={handleSubmitGuess}
+        gameStatus={gameStatus}
+      />
+      {gameStatus === 'won' && <WonBanner numOfGuesses={guesses.length} />}
+      {gameStatus === 'lost' && <LostBanner answer={answer} />}
     </>
   )
 }
