@@ -3,9 +3,6 @@ import { KEYBOARD_KEYS } from '../../data'
 
 function Keyboard({ verifiedGuesses }) {
   function checkLetter(letter) {
-    // if misplaced
-    // if correct
-    // if incorrect
     let statusClass = ''
     for (const word of verifiedGuesses) {
       for (const item of word) {
