@@ -50,3 +50,41 @@ export const WORDS = [
   'ROYAL',
   'HONEY',
 ];
+
+
+export const KEYBOARD_KEYS = [
+  [
+    { value: "Q", id: `1_1`, code: "KeyQ", width: 1 },
+    { value: "W", id: `1_2`, code: "KeyW", width: 1 },
+    { value: "E", id: `1_3`, code: "KeyE", width: 1 },
+    { value: "R", id: `1_4`, code: "KeyR", width: 1 },
+    { value: "T", id: `1_5`, code: "KeyT", width: 1 },
+    { value: "Y", id: `1_6`, code: "KeyY", width: 1 },
+    { value: "U", id: `1_7`, code: "KeyU", width: 1 },
+    { value: "I", id: `1_8`, code: "KeyI", width: 1 },
+    { value: "O", id: `1_9`, code: "KeyO", width: 1 },
+    { value: "P", id: `1_10`, code: "KeyP", width: 1 },
+  ],
+  [
+    { value: "A", id: `2_1`, code: "KeyA", width: 1 },
+    { value: "S", id: `2_2`, code: "KeyS", width: 1 },
+    { value: "D", id: `2_3`, code: "KeyD", width: 1 },
+    { value: "F", id: `2_4`, code: "KeyF", width: 1 },
+    { value: "G", id: `2_5`, code: "KeyG", width: 1 },
+    { value: "H", id: `2_6`, code: "KeyH", width: 1 },
+    { value: "J", id: `2_7`, code: "KeyJ", width: 1 },
+    { value: "K", id: `2_8`, code: "KeyK", width: 1 },
+    { value: "L", id: `2_9`, code: "KeyL", width: 1 },
+  ],
+  [
+    // { value: "shift", id: `3_0`, code: "ShiftLeft", width: 2.5 },
+    { value: "Z", id: `3_1`, code: "KeyZ", width: 1 },
+    { value: "X", id: `3_2`, code: "KeyX", width: 1 },
+    { value: "C", id: `3_3`, code: "KeyC", width: 1 },
+    { value: "V", id: `3_4`, code: "KeyV", width: 1 },
+    { value: "B", id: `3_5`, code: "KeyB", width: 1 },
+    { value: "N", id: `3_6`, code: "KeyN", width: 1 },
+    { value: "M", id: `3_7`, code: "KeyM", width: 1 },
+    // { value: "enter", id: `3_8`, code: "Enter", width: 2 }
+  ]
+];

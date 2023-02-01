@@ -3,7 +3,7 @@ import React from 'react'
 function GuessInput({ handleSubmitGuess, gameStatus }) {
   const [tentativeGuess, setTentativeGuess] = React.useState('')
 
-  function guess(event) {
+  function handleSubmit(event) {
     event.preventDefault()
     if (tentativeGuess.length < 5) {
       window.alert('Must enter exactly and no more than 5 letters')
@@ -15,7 +15,7 @@ function GuessInput({ handleSubmitGuess, gameStatus }) {
   }
   return (
     <>
-      <form onSubmit={guess} className="guess-input-wrapper">
+      <form onSubmit={handleSubmit} className="guess-input-wrapper">
         <label htmlFor="guess-input">Enter guess:</label>
         <input
           id="guess-input"
@@ -29,6 +29,7 @@ function GuessInput({ handleSubmitGuess, gameStatus }) {
             const upperCaseGuess = event.target.value.toUpperCase()
             setTentativeGuess(upperCaseGuess)
           }}
+          onKeyDown={(event) => console.log(event.code)}
         />
       </form>
     </>
